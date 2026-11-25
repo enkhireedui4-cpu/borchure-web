@@ -1,0 +1,209 @@
+@font-face {
+  font-family: Inter;
+  src: url("./assets/inter-text.woff2") format("woff2");
+  font-weight: 400 600;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  --ink: #151a1f;
+  --muted: #525b65;
+  --line: #dce1e5;
+  --paper: #fff;
+  --surface: #f2f4f6;
+  --studio: #f6f7f8;
+  --red: #c91023;
+  --red-hover: #a70819;
+  --navy: #092645;
+  --charcoal: #161c24;
+  --gutter: clamp(.85rem, 4vw, 3rem);
+  font: 400 100%/1.5 Inter, system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: var(--surface); }
+h1, h2, h3, p { margin: 0; }
+img { display: block; max-inline-size: 100%; }
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+
+.shell { inline-size: min(100% - 2 * var(--gutter), 75rem); margin-inline: auto; }
+.sr-only, .skip-link:not(:focus) { position: absolute; inline-size: 1px; block-size: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.skip-link { position: fixed; inset: .75rem auto auto .75rem; z-index: 5; background: var(--paper); padding: .65rem 1rem; }
+
+.site-header { background: var(--navy); color: #fff; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-block-size: 3.75rem; border-block-end: 1px solid #ffffff30; }
+.brand { display: inline-flex; align-items: center; min-block-size: 44px; }
+.brand img { inline-size: clamp(6.75rem, 11vw, 8.75rem); block-size: auto; }
+.header-phone { display: inline-flex; align-items: center; gap: .65rem; min-block-size: 44px; white-space: nowrap; font-size: .94rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.header-phone:hover, .footer-links a:hover { text-decoration: underline; text-underline-offset: .26em; }
+.header-phone-label { color: #c4d2e0; font-weight: 400; }
+.site-header :focus-visible { outline-color: #fff; }
+
+.resource-intro { padding-block: clamp(.85rem, 1.8vw, 1.45rem); color: #fff; background: var(--navy); }
+.resource-intro h1 {
+  border-inline-start: 4px solid #ed1b32;
+  padding-inline-start: clamp(.68rem, 1.65vw, 1.2rem);
+  font-size: clamp(1.35rem, 2.8vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -.045em;
+}
+
+.resource-controls {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 2;
+  background: var(--paper);
+  border-block-end: 1px solid var(--line);
+}
+.section-nav { display: flex; gap: clamp(1.1rem, 3.6vw, 2.7rem); }
+.section-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 52px;
+  padding: .35rem 0;
+  border-block-end: 3px solid transparent;
+  font-size: .96rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.section-nav a:hover { color: var(--ink); }
+.section-nav a[aria-current] { color: var(--ink); border-block-end-color: var(--red); }
+.catalog-tools { border-block-start: 1px solid var(--line); }
+.tools-inner { display: flex; align-items: center; justify-content: space-between; gap: .7rem 1.1rem; padding-block: .65rem; }
+.brand-nav { display: flex; flex-wrap: wrap; gap: .45rem; }
+.brand-nav button {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 42px;
+  padding: .3rem .83rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: .875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.brand-nav button:hover { border-color: var(--navy); }
+.brand-nav button[aria-pressed="true"] { border-color: var(--navy); background: var(--navy); color: #fff; }
+.search { position: relative; flex: 0 1 17.5rem; min-inline-size: 11rem; }
+.search input {
+  display: block;
+  inline-size: 100%;
+  min-block-size: 44px;
+  padding: .5rem .8rem .5rem 2.4rem;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: .45rem;
+  background: #fafbfc;
+  font-size: 1rem;
+}
+.search input::placeholder { color: var(--muted); }
+.search-icon { position: absolute; inset: 14px auto auto 13px; inline-size: 14px; block-size: 14px; border: 1.6px solid var(--muted); border-radius: 50%; pointer-events: none; }
+.search-icon::after { content: ""; position: absolute; inline-size: 6px; block-size: 1.5px; inset: 11px auto auto 9px; transform: rotate(45deg); background: var(--muted); border-radius: 1px; }
+
+.catalog, .faq { padding-block: clamp(.65rem, 1.55vw, 1.1rem) clamp(2.7rem, 6vw, 5rem); }
+.catalog-status { display: flex; justify-content: space-between; align-items: baseline; gap: .25rem 1rem; margin-block-end: .65rem; color: var(--muted); font-size: .9rem; }
+#result-count { margin-inline-start: auto; white-space: nowrap; }
+#brand-groups { display: grid; gap: clamp(.85rem, 2vw, 1.5rem); }
+.faq { scroll-margin-block-start: 3.5rem; }
+.brand-group {
+  padding: clamp(.8rem, 2.15vw, 1.5rem);
+  border: 1px solid var(--line);
+  border-radius: .75rem;
+  background: var(--paper);
+}
+.group-heading { display: flex; align-items: baseline; justify-content: space-between; gap: .7rem; margin-block-end: .85rem; }
+.group-heading h2 { font-size: clamp(1.12rem, 2.1vw, 1.48rem); line-height: 1.2; font-weight: 600; letter-spacing: -.035em; }
+.group-count { font-size: .875rem; color: var(--muted); white-space: nowrap; }
+.vehicle-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.58rem, 1.65vw, 1.15rem); margin: 0; padding: 0; list-style: none; }
+.vehicle { position: relative; display: flex; min-inline-size: 0; flex-direction: column; border: 1px solid var(--line); border-radius: .53rem; background: var(--paper); }
+.vehicle:hover { border-color: #b1b9c2; }
+.vehicle-photo { aspect-ratio: 556 / 312; border-radius: .48rem .48rem 0 0; overflow: hidden; background: var(--studio); }
+.vehicle-photo img { inline-size: 100%; block-size: 100%; object-fit: contain; mix-blend-mode: multiply; }
+.vehicle-copy { display: flex; flex: 1; flex-direction: column; padding: clamp(.58rem, 1.45vw, 1rem); }
+.vehicle-name { font-size: clamp(.94rem, 1.55vw, 1.18rem); line-height: 1.23; letter-spacing: -.03em; font-weight: 600; overflow-wrap: anywhere; }
+.vehicle-trim { margin-block-start: .18rem; color: var(--muted); font-size: .875rem; overflow-wrap: anywhere; }
+.vehicle-action {
+  align-self: flex-start;
+  margin-block-start: auto;
+  padding: .7rem 0 .12rem;
+  border: 0;
+  background: transparent;
+  color: var(--red);
+  font-size: .89rem;
+  font-weight: 600;
+  text-align: start;
+}
+.vehicle-action::after { content: ""; position: absolute; inset: 0; border-radius: .53rem; }
+.vehicle-action:focus-visible { outline: none; }
+.vehicle-action:focus-visible::after { outline: 2px solid var(--red); outline-offset: 3px; }
+.vehicle:hover .vehicle-action { text-decoration: underline; text-underline-offset: .24em; }
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 41px;
+  padding: .45rem .55rem;
+  border: 1px solid transparent;
+  border-radius: .38rem;
+  font-size: .89rem;
+  font-weight: 600;
+  line-height: 1.26;
+  text-align: center;
+}
+.button-primary { background: var(--red); color: #fff; }
+.button-primary:hover { background: var(--red-hover); }
+.button-secondary { color: var(--ink); background: var(--paper); border-color: #aeb7c0; }
+.button-secondary:hover { border-color: var(--ink); background: #f6f7f8; }
+.empty { padding: clamp(1.4rem, 4vw, 3rem); border: 1px solid var(--line); border-radius: .65rem; text-align: center; background: var(--paper); }
+.empty .button { margin-block-start: .75rem; }
+
+main { min-block-size: calc(100svh - 10.25rem); }
+.faq h2 { margin-block-end: 1rem; font-size: clamp(1.35rem, 2.5vw, 2rem); font-weight: 600; letter-spacing: -.035em; }
+.faq details { border: 1px solid var(--line); border-radius: .55rem; background: var(--paper); }
+.faq details + details { margin-block-start: .65rem; }
+.faq summary { font-weight: 600; padding: .85rem 1rem; cursor: pointer; }
+.faq details p { padding: 0 1rem 1rem; max-inline-size: 57rem; color: var(--muted); }
+.faq a { color: var(--red); text-decoration: underline; }
+
+.site-footer { background: var(--charcoal); color: #fff; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem 2rem; min-block-size: 5.9rem; padding-block: .85rem; }
+.footer-brand { inline-size: 7rem; block-size: auto; }
+.footer-links { display: flex; flex-wrap: wrap; gap: .1rem 1.5rem; }
+.footer-links a { display: inline-flex; align-items: center; min-block-size: 44px; font-size: .9rem; font-weight: 600; }
+
+dialog { inline-size: min(100% - 2rem, 30.5rem); max-block-size: calc(100% - 2rem); padding: 0; border: 0; margin: auto; color: var(--ink); background: var(--paper); border-radius: .8rem; box-shadow: 0 22px 80px #0004; }
+dialog::backdrop { background: #111724b8; }
+body:has(dialog[open]) { overflow: hidden; }
+.dialog-inner { position: relative; }
+.dialog-close { position: absolute; inset: .6rem .6rem auto auto; display: grid; place-items: center; inline-size: 44px; block-size: 44px; padding: 0; color: var(--ink); border-radius: 50%; border: 1px solid var(--line); background: var(--paper); font-size: 1.65rem; line-height: 1; }
+.dialog-photo { inline-size: 100%; block-size: auto; background: var(--studio); }
+.dialog-copy { padding: clamp(1rem, 4vw, 1.65rem); }
+.dialog-copy h2 { font-size: clamp(1.3rem, 5vw, 1.9rem); font-weight: 600; letter-spacing: -.04em; }
+.dialog-trim { margin-block-start: .15rem; color: var(--muted); }
+#dialog-message { margin-block-start: .65rem; color: var(--muted); }
+.dialog-contact { margin-block-start: 1rem; min-block-size: 44px; padding-inline: .85rem; }
+
+@media (max-width: 56rem) {
+  .vehicle-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 42rem) {
+  .header-inner { min-block-size: 3.15rem; }
+  .header-phone-label { display: none; }
+  .resource-controls { position: relative; }
+  .section-nav a { min-block-size: 44px; }
+  .tools-inner { flex-direction: column; align-items: stretch; padding-block: .45rem .6rem; gap: .35rem; }
+  .brand-nav { gap: .3rem; }
+  .brand-nav button { min-block-size: 44px; padding-inline: .6rem; font-size: .82rem; }
+  .search { flex-basis: auto; }
+  .catalog-status { font-size: .82rem; }
+  .vehicle-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .vehicle-action { font-size: .84rem; }
+}

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Сайн Моторсын автомашины загварууд болон PDF танилцуулгууд.">
+  <title>Автомашины танилцуулга | Sain Motors</title>
+  <link rel="icon" href="./assets/sain-mark.png" type="image/png">
+  <link rel="preload" href="./assets/inter-text.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#models">Танилцуулга руу очих</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="Sain Motors · Нүүр">
+        <img src="./assets/sain-on-dark.png" width="462" height="122" alt="Sain Motors">
+      </a>
+      <a class="header-phone" href="tel:+97675111111">
+        <span class="header-phone-label">Борлуулалт</span>
+        <span>7511-1111</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <header class="resource-intro">
+      <div class="shell">
+        <h1>Автомашины танилцуулга</h1>
+      </div>
+    </header>
+
+    <div class="resource-controls" id="models">
+      <nav class="section-nav shell" aria-label="Каталогийн хэсгүүд">
+        <a href="#models" id="catalog-link" aria-current="location">Танилцуулга</a>
+        <a href="#faq" id="faq-link">Түгээмэл асуулт</a>
+      </nav>
+      <div class="catalog-tools" id="catalog-tools">
+        <div class="shell tools-inner">
+          <div class="brand-nav" id="brand-nav" role="group" aria-label="Брэндээр шүүх">
+            <button type="button" value="all" aria-pressed="true">Бүгд</button>
+          </div>
+          <div class="search">
+            <label class="sr-only" for="model-search">Загвар хайх</label>
+            <span class="search-icon" aria-hidden="true"></span>
+            <input id="model-search" type="search" placeholder="Загвар хайх" autocomplete="off" spellcheck="false">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="catalog shell" id="catalog" aria-label="Автомашинууд">
+      <div class="catalog-status">
+        <p id="catalog-note" hidden>PDF танилцуулгууд удахгүй нэмэгдэнэ.</p>
+        <p id="result-count" role="status" aria-atomic="true"></p>
+      </div>
+      <div id="brand-groups"></div>
+      <div class="empty" id="empty" hidden>
+        <p>Хайлтад тохирох загвар олдсонгүй.</p>
+        <button type="button" class="button button-secondary" id="reset-search">Хайлтыг арилгах</button>
+      </div>
+      <noscript><p>Танилцуулга үзэхэд хөтчийн JavaScript хэрэгтэй. Борлуулалтын утас <a href="tel:+97675111111">7511-1111</a>.</p></noscript>
+    </section>
+
+    <section class="faq shell" id="faq" aria-labelledby="faq-title" hidden>
+      <h2 id="faq-title">Түгээмэл асуулт</h2>
+      <details>
+        <summary>PDF танилцуулгыг яаж нээх вэ?</summary>
+        <p>Загварын картыг дарахад боршур шинэ табд нээгдэнэ. Хөтчийн татах товчоор файлыг хадгалж болно.</p>
+      </details>
+      <details>
+        <summary>Загварын PDF хараахан бэлэн болоогүй бол яах вэ?</summary>
+        <p>Загварын картыг дарж зураг, хувилбарыг нь харна. Дэлгэрэнгүй мэдээллийг <a href="tel:+97675111111">7511-1111</a> дугаараас лавлаж болно.</p>
+      </details>
+      <details>
+        <summary>Нэг загварын хувилбаруудыг яаж ялгах вэ?</summary>
+        <p>Хувилбарын нэрийг загварын нэрийн доор харуулна. Хайлтад загварын нэр эсвэл Luxury, Comfort, Changfeng зэрэг хувилбарын нэрийг бичиж болно.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <img class="footer-brand" src="./assets/sain-on-dark.png" width="462" height="122" alt="Sain Motors" loading="lazy">
+      <div class="footer-links">
+        <a href="tel:+97675111111">7511-1111</a>
+        <a href="https://sainmotors.mn/mn/">sainmotors.mn</a>
+      </div>
+    </div>
+  </footer>
+
+  <template id="brand-template">
+    <section class="brand-group" tabindex="-1">
+      <div class="group-heading">
+        <h2></h2>
+        <p class="group-count"></p>
+      </div>
+      <ul class="vehicle-grid" role="list"></ul>
+    </section>
+  </template>
+
+  <template id="vehicle-template">
+    <li class="vehicle">
+      <div class="vehicle-photo"><img width="556" height="312" alt="" loading="lazy" decoding="async"></div>
+      <div class="vehicle-copy">
+        <h3 class="vehicle-name"></h3>
+        <p class="vehicle-trim"></p>
+        <a class="vehicle-action pdf-link" target="_blank" rel="noopener" hidden>Боршур үзэх <span aria-hidden="true">↗</span></a>
+        <button class="vehicle-action model-button" type="button" aria-haspopup="dialog">Загвар үзэх</button>
+      </div>
+    </li>
+  </template>
+
+  <dialog id="model-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-inner">
+      <button class="dialog-close" type="button" aria-label="Хаах" autofocus>×</button>
+      <img class="dialog-photo" width="556" height="312" alt="">
+      <div class="dialog-copy">
+        <h2 id="dialog-title"></h2>
+        <p id="dialog-trim" class="dialog-trim"></p>
+        <p id="dialog-message">Энэ загварын PDF танилцуулга удахгүй нэмэгдэнэ.</p>
+        <a class="button button-primary dialog-contact" href="tel:+97675111111">Борлуулалт руу залгах</a>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>
